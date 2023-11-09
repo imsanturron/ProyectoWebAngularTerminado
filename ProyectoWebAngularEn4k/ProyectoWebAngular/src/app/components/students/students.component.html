@@ -25,30 +25,26 @@
             <td>{{student.status}}</td>
             <td>{{student.phone}}</td>
             <td>{{student.cohort}}</td>
-            <button (click)="update(ver, student)">Update</button>
-            <button (click)="delete(student.id)">Delete</button>
+            <button class="btn btn-success btn-sm" (click)="update(ver, student)">Update</button>
+            <button class="btn btn-danger btn-sm" (click)="delete(student.id)">Delete</button>
         </tr>
     </tbody>
     <tfoot>
-       
+
     </tfoot>
 </table>
 
-<form [formGroup]="studentForm"> 
-        Dni<br>
-        <input formControlName="dni"> <!---->
-        <p *ngIf="dni.errors.required">Campo obligatorio</p>
-        Last Name<br>
-        <input formControlName="lastName"> <!---->
-        <p *ngIf="dni.errors.required">Campo obligatorio</p>
-        First Name<br>
-        <input formControlName="firstName"> <!---->
-        <p *ngIf="dni.errors.required">Campo obligatorio</p>
-        Email<br>
-        <input formControlName="email"> <!---->
-        <p *ngIf="dni.errors.required">Campo obligatorio</p>
+<form [formGroup]="studentForm">
+    <input formControlName="dni" placeholder="DNI"> 
+    <p *ngIf="dni.touched && dni.errors?.required">Campo obligatorio</p><br>
+    <input formControlName="lastName" placeholder="Last Name">
+    <p *ngIf="lastName.touched && lastName.errors?.required">Campo obligatorio</p><br>
+    <input formControlName="firstName" placeholder="First Name">
+    <p *ngIf="firstName.touched && firstName.errors?.required">Campo obligatorio</p><br>
+    <input formControlName="email" placeholder="Email">
+    <p *ngIf="email.touched && email.errors?.required">Campo obligatorio</p><br>
 
-        <button (click)="save()">Save</button>
+    <button class="btn btn-primary btn-sm" (click)="save()">Save</button>
     <!--<td><input type="text" [(ngModel)]="dni"> </td>
     <td><input type="text" [(ngModel)]="lastName"></td>
     <td><input type="text" [(ngModel)]="firstName"></td>
@@ -59,19 +55,19 @@
 <ng-template #ver let-modal>
     <div class="modal-header">
         <h5 class="modal-title">View student</h5>
-        <button>...............................</button>
+        <button class="close" aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="modal-body">
-     <label>Id:</label>
-     <input class="form-control" [(ngModel)]="id2" readonly>
-     <label>Dni:</label>
-     <input class="form-control" [(ngModel)]="dni2" ngbAutofocus>
-     <label>Last Name:</label>
-     <input class="form-control" [(ngModel)]="lastName2">
-     <label>First name:</label>
-     <input class="form-control" [(ngModel)]="firstName2">
-     <label>Email:</label>
-     <input class="form-control" [(ngModel)]="email2">
+        <label>Id:</label>
+        <input class="form-control" [(ngModel)]="id2" readonly>
+        <label>Dni:</label>
+        <input class="form-control" [(ngModel)]="dni2" ngbAutofocus>
+        <label>Last Name:</label>
+        <input class="form-control" [(ngModel)]="lastName2">
+        <label>First name:</label>
+        <input class="form-control" [(ngModel)]="firstName2">
+        <label>Email:</label>
+        <input class="form-control" [(ngModel)]="email2">
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" (click)="modal.close()">Guardar</button>
